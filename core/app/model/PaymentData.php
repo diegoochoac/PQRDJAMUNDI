@@ -17,6 +17,8 @@ class PaymentData {
 		return Executor::doit($sql);
 	}
 
+
+
 	public static function delById($id){
 		$sql = "delete from ".self::$tablename." where id=$id";
 		Executor::doit($sql);

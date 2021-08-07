@@ -119,7 +119,7 @@
 				?>
 
 					<td><?php echo $user->name . " " . $user->lastname; ?></td>
-					<td><?php echo $user->cc; ?></td>
+					<td><?php echo $user->numdoc; ?></td>
 					<td><?php echo $user->email; ?></td>
 					<td><?php echo $user->phone; ?></td>
 					<td><?php echo $user->phonecel; ?></td>

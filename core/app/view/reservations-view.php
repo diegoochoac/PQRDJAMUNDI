@@ -13,7 +13,8 @@
 				<a href="./index.php?view=newreservation" class="btn btn-info">Crear Nuevo Caso</a>
 				<!-- <a href="./index.php?view=oldreservations" class="btn btn-default">Citas Anteriores</a> -->
 				<hr>
-				<br><br>
+				<!-- <br><br> -->
+				<h4 class="title">Busqueda de Casos</h4>
 				<form class="form-horizontal" role="form">
 					<input type="hidden" name="view" value="reservations">
 					<?php
@@ -23,21 +24,18 @@
 
 					<div class="form-group">
 
-						<div class="col-lg-2">
+
+						<div class="col-lg-3">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-search"></i></span>
-								<select name="pacient_id" class="form-control">
-									<option value="">Tipo de Caso</option>
-									<?php foreach ($pacients as $p) : ?>
-										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["pacient_id"]) && $_GET["pacient_id"] == $p->id) {
-																					echo "selected";
-																				} ?>><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
-									<?php endforeach; ?>
-								</select>
+								<span class="input-group-addon">Número de caso <i class="fa fa-search"></i></span>
+								<input type="text" name="numcase" value="<?php if (isset($_GET["numcase"]) && $_GET["numcase"] != "") {
+																				echo $_GET["numcase"];
+																			} ?>" class="form-control" placeholder=" ">
+
 							</div>
 						</div>
 
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-male"></i></span>
 								<select name="pacient_id" class="form-control">
@@ -54,7 +52,7 @@
 						<div class="col-lg-2">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-support"></i></span>
-								<select name="medic_id" class="form-control">
+								<select name="funci_id1" class="form-control">
 									<option value="">Funcionario</option>
 									<?php foreach ($medics as $p) : ?>
 										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["medic_id"]) && $_GET["medic_id"] == $p->id) {
@@ -64,7 +62,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-3">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 								<input type="date" name="date_at" value="<?php if (isset($_GET["date_at"]) && $_GET["date_at"] != "") {
@@ -82,25 +80,20 @@
 
 				<?php
 				$users = array();
-				if ((isset($_GET["pacient_id"]) && isset($_GET["medic_id"]) && isset($_GET["date_at"])) && ($_GET["pacient_id"] != "" || $_GET["medic_id"] != "" || $_GET["date_at"] != "")) {
+				if ((isset($_GET["numcase"]) && isset($_GET["funci_id1"]) && isset($_GET["date_at"])) && ($_GET["numcase"] != "" || $_GET["funci_id1"] != "" || $_GET["date_at"] != "")) {
 					$sql = "select * from reservation where ";
-					// if ($_GET["q"] != "") {
-					// 	$sql .= " title like '%$_GET[q]%' and note like '%$_GET[q] %' ";
-					// }
-					if ($_GET["pacient_id"] != "") {
-						// if ($_GET["q"] != "") {
-						// 	$sql .= " and ";
-						// }
-						$sql .= " pacient_id = " . $_GET["pacient_id"];
+
+					if ($_GET["numcase"] != "") {
+						$sql .= "id=" . $_GET["numcase"];
 					}
-					if ($_GET["medic_id"] != "") {
-						if ($_GET["q"] != "" || $_GET["pacient_id"] != "") {
+					if ($_GET["funci_id1"] != "") {
+						if ($_GET["pacient_id"] != "") {
 							$sql .= " and ";
 						}
-						$sql .= " medic_id = " . $_GET["medic_id"];
+						$sql .= " funci_id1 = " . $_GET["funci_id1"];
 					}
 					if ($_GET["date_at"] != "") {
-						if ($_GET["q"] != "" || $_GET["pacient_id"] != "" || $_GET["medic_id"] != "") {
+						if ($_GET["numcase"] != "" || $_GET["funci_id1"] != "") {
 							$sql .= " and ";
 						}
 						$sql .= " date_at = \"" . $_GET["date_at"] . "\"";
@@ -115,22 +108,33 @@
 				?>
 					<table class="table table-bordered table-hover">
 						<thead>
-							<th>Asunto</th>
-							<th>Paciente</th>
-							<th>Funcionario</th>
-							<th>Fecha</th>
-							<th></th>
+							<th>Número del Caso</th>
+							<th>Tipo de Caso</th>
+							<th>Estado del Caso</th>
+							<th>Nombre Afectado</th>
+							<th>Apellido Afectado</th>
+							<th>EPS</th>
+							<th>Condición del Afectado</th>
+							<th>Funcionario Atención</th>
+							<th>Número de PQRD SISNET</th>
+							<th>Fecha Creación</th>
 						</thead>
 						<?php
 						foreach ($users as $user) {
 							$pacient  = $user->getPacient();
-							$medic = $user->getMedic();
+							//$medic = $user->getMedic();
 						?>
 							<tr>
-								<td><?php echo $user->title; ?></td>
-								<td><?php echo $pacient->name . " " . $pacient->lastname; ?></td>
-								<td><?php echo $medic->name . " " . $medic->lastname; ?></td>
-								<td><?php echo $user->date_at . " " . $user->time_at; ?></td>
+								<td><?php echo $user->id; ?></td>
+								<td><?php echo $user->typecase; ?></td>
+								<td><?php echo $user->status_id; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->name; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->lastname; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
+								<td><?php echo $user->conafec ?></td>
+								<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+								<td><?php echo $user->numrad; ?></td>
+								<td><?php echo $user->date_at; ?></td>
 								<td style="width:180px;">
 									<a href="index.php?view=editreservation&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
 									<a href="index.php?action=delreservation&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
@@ -144,8 +148,9 @@
 			</div>
 		</div>
 	<?php
+				} else if (isset($_GET["pacient_id"]) != "" && count($users) == 0) {
+					echo "<p class='alert alert-danger'>No Se encuentra Busqueda</p>";
 				} else {
-					echo "<p class='alert alert-danger'>No hay pacientes</p>";
 	?>
 
 		<br>
@@ -182,12 +187,12 @@
 					<tr>
 						<td><?php echo $user->id; ?></td>
 						<td><?php echo $user->typecase; ?></td>
-						<td><?php echo $user->status_id ; ?></td>
+						<td><?php echo $user->status_id; ?></td>
 						<td><?php echo PacientData::getById($user->pacient_id)->name; ?></td>
 						<td><?php echo PacientData::getById($user->pacient_id)->lastname; ?></td>
 						<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
 						<td><?php echo $user->conafec ?></td>
-						<td><?php echo MedicData::getById($user->medic_id)->name; ?></td>
+						<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
 						<td><?php echo $user->numrad; ?></td>
 						<td><?php echo $user->date_at; ?></td>
 						<td style="width:180px;">
@@ -205,7 +210,7 @@
 	<?php
 
 					} else {
-						echo "<p class='alert alert-danger'>No hay pacientes</p>";
+						echo "<p class='alert alert-danger'>No Se encuentra Busqueda</p>";
 					}
 				}
 	?>

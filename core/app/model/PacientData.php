@@ -13,14 +13,27 @@ class PacientData {
 	public function add(){
 		// $sql = "insert into ".self::$tablename." (name,lastname,cc,gender,day_of_birth,address,phone,email,sick,medicaments,alergy,created_at) ";
 		// $sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->cc\",\"$this->gender\",\"$this->day_of_birth\",\"$this->address\",\"$this->phone\",\"$this->email\",\"$this->sick\",\"$this->medicaments\",\"$this->alergy\",$this->created_at)";
-		$sql = "insert into ".self::$tablename." (namepeticionario,lastnamepeticionario,typedocpeticionario,ccpeticionario,phone1peticionario,phone2peticionario,emailpeticionario,name,lastname,typedoc,cc,gender,day_of_birth,age,gender2,disca,address,address2,phone,phonecel,eps,regimen,extranjero,extranjerostate,email,created_at,tipopoblacion) ";
-		$sql .= "value (\"$this->namepeticionario\",\"$this->lastnamepeticionario\",\"$this->typedocpeticionario\",\"$this->ccpeticionario\",\"$this->phone1peticionario\",\"$this->phone2peticionario\",\"$this->emailpeticionario\",\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->cc\",\"$this->gender\",\"$this->day_of_birth\",\"$this->age\",\"$this->gender2\",\"$this->disca\",\"$this->address\",\"$this->address2\",\"$this->phone\",\"$this->phonecel\",\"$this->eps\",\"$this->regimen\",\"$this->extranjero\",\"$this->extranjerostate\",\"$this->email\",$this->created_at,$this->tipopoblacion)";
+		$sql = "insert into ".self::$tablename." (name,lastname,typedoc,cc,gender,day_of_birth,age,gender2,disca,address,address2,phone,phonecel,eps,regimen,extranjero,extranjerostate,email,created_at,tipopoblacion) ";
+		$sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->numdoc\",\"$this->gender\",\"$this->day_of_birth\",\"$this->age\",\"$this->gender2\",\"$this->disca\",\"$this->address\",\"$this->address2\",\"$this->phone\",\"$this->phonecel\",\"$this->eps\",\"$this->regimen\",\"$this->extranjero\",\"$this->extranjerostate\",\"$this->email\",$this->created_at,$this->tipopoblacion)";
 		try{
 			Executor::doit($sql);
 		}catch(Exception $e){
 			echo "ERROR ADD PACIENT: ".$e;
 		}
 		
+	}
+
+	public static function addForce($pacienid,$namea, $lastnamea, $typedoca, $numdoca, $phone1a, $phone2a, $emaila,$gender,$day_of_birth,$age,$gender2,$disca,$address,$address2,$eps,$regimen,$extranjero,$extranjerostate,$tipopoblacion)
+	{
+		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone,phonecel,email,id_pacientp,gender,day_of_birth,age,gender2,typedisca,address,address2,eps,typereg,extranjero,extranjerostate,typepobla,created_at ) ";
+		$sql .= "value (\"$namea\",\"$lastnamea\",\"$typedoca\",$numdoca,\"$phone1a\",\"$phone2a\",\"$emaila\",$pacienid,\"$gender\",\"$day_of_birth\",\"$age\",\"$gender2\",\"$disca\",\"$address\",\"$address2\",\"$eps\",\"$regimen\",\"$extranjero\",\"$extranjerostate\",\"$tipopoblacion\",NOW())";
+		echo $sql;
+		try {
+			
+			Executor::doit($sql);
+		} catch (Exception $e) {
+			echo "ERROR ADD PACIENT: " . $e;
+		}
 	}
 
 	public static function delById($id){

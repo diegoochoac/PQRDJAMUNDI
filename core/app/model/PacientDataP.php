@@ -14,10 +14,8 @@ class PacientDataP
 
 	public function add()
 	{
-		// $sql = "insert into ".self::$tablename." (name,lastname,cc,gender,day_of_birth,address,phone,email,sick,medicaments,alergy,created_at) ";
-		// $sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->cc\",\"$this->gender\",\"$this->day_of_birth\",\"$this->address\",\"$this->phone\",\"$this->email\",\"$this->sick\",\"$this->medicaments\",\"$this->alergy\",$this->created_at)";
-		$sql = "insert into " . self::$tablename . " (namepeticionario,lastnamepeticionario,typedocpeticionario,ccpeticionario,phone1peticionario,phone2peticionario,emailpeticionario,name,lastname,typedoc,cc,gender,day_of_birth,age,gender2,disca,address,address2,phone,phonecel,eps,regimen,extranjero,extranjerostate,email,created_at,tipopoblacion) ";
-		$sql .= "value (\"$this->namepeticionario\",\"$this->lastnamepeticionario\",\"$this->typedocpeticionario\",\"$this->ccpeticionario\",\"$this->phone1peticionario\",\"$this->phone2peticionario\",\"$this->emailpeticionario\",\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->cc\",\"$this->gender\",\"$this->day_of_birth\",\"$this->age\",\"$this->gender2\",\"$this->disca\",\"$this->address\",\"$this->address2\",\"$this->phone\",\"$this->phonecel\",\"$this->eps\",\"$this->regimen\",\"$this->extranjero\",\"$this->extranjerostate\",\"$this->email\",$this->created_at,$this->tipopoblacion)";
+		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone1,phone2,email,created_at) ";
+		$sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->numdoc\",\"$this->phone1\",\"$this->phone2\",\"$this->email\",$this->created_at)";
 		try {
 			Executor::doit($sql);
 		} catch (Exception $e) {
@@ -27,10 +25,10 @@ class PacientDataP
 
 	public static function addForce($nameq, $lastnameq, $typedocq, $numdocq, $phone1q, $phone2q, $emailq)
 	{
-		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone1,phone2,email) ";
-		$sql .= "value (\"$nameq\",\"$lastnameq\",\"$typedocq\",$numdocq,\"$phone1q\",\"$phone2q\",\"$emailq\")";
+		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone1,phone2,email,created_at) ";
+		$sql .= "value (\"$nameq\",\"$lastnameq\",\"$typedocq\",$numdocq,\"$phone1q\",\"$phone2q\",\"$emailq\",NOW())";
+		echo $sql;
 		try {
-			
 			Executor::doit($sql);
 		} catch (Exception $e) {
 			echo "ERROR ADD PACIENT: " . $e;

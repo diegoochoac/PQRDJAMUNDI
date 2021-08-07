@@ -109,7 +109,7 @@ $reserva = ReservationData::getById($_GET["id"]);
 		<!-- TODO- Limitar el numero de pacientes que se muestran -->
 		<?php
 					//$users = HistoryReservationData::getAllDATA();	//TODO que busque por seguimiento_id
-					$users = HistoryReservationData::getByIdReservation(11);	//TODO que busque por seguimiento_id
+					$users = HistoryReservationData::getByIdReservation($_GET["id"]);	//TODO que busque por seguimiento_id
 
 					if (count($users) > 0) {
 						// si hay usuarios
@@ -152,7 +152,7 @@ $reserva = ReservationData::getById($_GET["id"]);
 	<?php
 
 					} else {
-						echo "<p class='alert alert-danger'>No hay pacientes</p>";
+						echo "<p class='alert alert-danger'>No hay Seguimientos</p>";
 					}
 				}
 	?>

@@ -17,11 +17,9 @@ class HistoryReservationData {
 	// public function getPayment(){ return PaymentData::getById($this->payment_id); }
 
 	public function add(){
-		// $sql = "insert into reservation (title,note,medic_id,date_at,time_at,pacient_id,user_id,price,status_id,payment_id,sick,symtoms,medicaments,created_at) ";
-		// $sql .= "value (\"$this->title\",\"$this->note\",\"$this->medic_id\",\"$this->date_at\",\"$this->time_at\",$this->pacient_id,$this->user_id,\"$this->price\",$this->status_id,$this->payment_id,\"$this->sick\",\"$this->symtoms\",\"$this->medicaments\",$this->created_at)";
-		$sql = "insert into historyreservation (tiposeguimiento,diagnostico,llamada,estado,tipoevento,descripcion,reservation_id,created_at) ";
-		$sql .= "value (\"$this->tiposeguimiento\",\"$this->diagnostico\",\"$this->llamada\",\"$this->estado\",\"$this->tipoevento\",\"$this->descripcion\",\"$this->reservation_id\",$this->created_at)";
-
+		$sql = "insert into historyreservation (rad,rad_prorroga,f_prorroga,f_cierre,tiposeguimiento,diagnostico,llamada,estado,rad_cierre,rad_traslado,f_traslado,entidadtraslado,tipoevento,descripcion,reservation_id,created_at) ";
+		$sql .= "value (\"$this->rad\",\"$this->rad_prorroga\",\"$this->f_prorroga\",\"$this->f_cierre\",\"$this->tiposeguimiento\",\"$this->diagnostico\",\"$this->llamada\",\"$this->estado\",\"$this->rad_cierre\",\"$this->rad_traslado\",\"$this->f_traslado\",\"$this->entidadtraslado\",\"$this->tipoevento\",\"$this->descripcion\",\"$this->reservation_id\",$this->created_at)";
+		echo $sql;
 		return Executor::doit($sql);
 	}
 
@@ -103,5 +101,3 @@ class HistoryReservationData {
 
 
 }
-
-?>
