@@ -11,15 +11,6 @@ $pacient = MedicData::getById($_GET["id"]);
 		<div class="card-content table-responsive">
 			<div class="col-md-12">
 				<div class="btn-group pull-right">
-					<!--<div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <i class="fa fa-download"></i> Descargar <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="report/clients-word.php">Word 2007 (.docx)</a></li>
-  </ul>
-</div>
--->
 				</div>
 				<?php
 				$users = ReservationData::getAllByMedicId($_GET["id"]);
@@ -28,10 +19,16 @@ $pacient = MedicData::getById($_GET["id"]);
 				?>
 					<table class="table table-bordered table-hover">
 						<thead>
-							<th>Numero de solicitud</th>
+							<th>Número del Caso</th>
 							<th>Tipo de Caso</th>
-							<th>Afectado</th>
-							<th>Fecha</th>
+							<th>Estado del Caso</th>
+							<th>Nombre Afectado</th>
+							<th>Apellido Afectado</th>
+							<th>EPS</th>
+							<th>Condición del Afectado</th>
+							<th>Funcionario Atención</th>
+							<th>Número de PQRD SISNET</th>
+							<th>Fecha Creación</th>
 						</thead>
 						<?php
 						foreach ($users as $user) {
@@ -40,10 +37,15 @@ $pacient = MedicData::getById($_GET["id"]);
 						?>
 							<tr>
 								<td><?php echo $user->id; ?></td>
-								<td><?php echo $user->title; ?></td>
-								<td><?php echo $pacient->name . " " . $pacient->lastname; ?></td>
-								<!-- <td><?php echo $medic->name . " " . $pacient->lastname; ?></td> -->
-								<td><?php echo $user->date_at . " " . $user->time_at; ?></td>
+								<td><?php echo $user->typecase; ?></td>
+								<td><?php echo $user->status_id; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->name; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->lastname; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
+								<td><?php echo $user->conafec ?></td>
+								<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+								<td><?php echo $user->numrad; ?></td>
+								<td><?php echo $user->date_at; ?></td>
 							</tr>
 						<?php
 
@@ -54,7 +56,7 @@ $pacient = MedicData::getById($_GET["id"]);
 
 
 				} else {
-					echo "<p class='alert alert-danger'>No hay citas</p>";
+					echo "<p class='alert alert-danger'>No hay Solicitudes para este Usuario</p>";
 				}
 
 

@@ -5,13 +5,16 @@
 		</div>
 		<div class="card">
 			<div class="card-header" data-background-color="blue">
-				<h4 class="title">Afectados</h4>
+				<h4 class="title">Usuarios</h4>
 			</div>
 
 
 			<div class="card-content table-responsive">
 				<h4 class="title">Agregar Afectado</h4>
-				<a href="index.php?view=newpacient" class="btn btn-default"><i class='fa fa-male'></i> Nuevo Paciente</a>
+				<a href="index.php?view=newpacient" class="btn btn-default"><i class='fa fa-male'></i> Nuevo Afectado</a>
+				<hr>
+				<h4 class="title">Agregar Peticionario</h4>
+				<a href="index.php?view=newpacientp" class="btn btn-default"><i class='fa fa-male'></i> Nuevo Peticionario</a>
 				<br>
 				<hr>
 

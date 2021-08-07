@@ -383,9 +383,24 @@ $payments = PaymentData::getAll();
                         </div>
                       </div>
                       <div class="col-4">
-                        <label for="inputEmail1" class="col-lg-2 control-label">Area Rural*</label>
+                        <label for="inputEmail1" class="col-lg-2 control-label">Barrio*</label>
                         <div class="col-md-3">
-                          <input type="text" name="address2a" class="form-control" id="address2" placeholder="Area Rural">
+                          <input type="text" name="address2a" class="form-control" id="address2" placeholder="Barrio">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <label for="inputEmail1" class="col-lg-2 control-label">Municipio*</label>
+                        <div class="col-md-3">
+                          <input type="text" name="address3a" class="form-control" id="address1" placeholder="Municipio">
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <label for="inputEmail1" class="col-lg-2 control-label">Corregimiento*</label>
+                        <div class="col-md-3">
+                          <input type="text" name="address4a" class="form-control" id="address2" placeholder="Corregimiento">
                         </div>
                       </div>
                     </div>
@@ -466,7 +481,7 @@ $payments = PaymentData::getAll();
 
                 <?php
                 if ((isset($_GET["namepeticionarioa"])) && ($_GET["namepeticionarioa"] != "") && $usersP == "") {
-                  PacientData::addForce($userP->id, $_GET["namepeticionarioa"], $_GET["lastnamea"], $_GET["typedoca"], $_GET["cca"], $_GET["phone1a"], $_GET["phone2a"], $_GET["emaila"], $_GET["gendera"], $_GET["day_of_birtha"], $_GET["agea"], $_GET["gender2a"], $_GET["tipodiscapacidada"], $_GET["addressa"], $_GET["address2a"], $_GET["epsa"], $_GET["tiporegimena"], $_GET["extranjeroa"], $_GET["extranjerostatea"], $_GET["tipopoblacionespeciala"]);
+                  PacientData::addForce($userP->id, $_GET["namepeticionarioa"], $_GET["lastnamea"], $_GET["typedoca"], $_GET["cca"], $_GET["phone1a"], $_GET["phone2a"], $_GET["emaila"], $_GET["gendera"], $_GET["day_of_birtha"], $_GET["agea"], $_GET["gender2a"], $_GET["tipodiscapacidada"], $_GET["addressa"], $_GET["address2a"],$_GET["address3a"],$_GET["address4a"], $_GET["epsa"], $_GET["tiporegimena"], $_GET["extranjeroa"], $_GET["extranjerostatea"], $_GET["tipopoblacionespeciala"]);
                   Core::redir("./index.php?view=newreservation&qa=" . $_GET["qa"] . "&qp=" . $_GET["qp"]);
                 }
                 ?>

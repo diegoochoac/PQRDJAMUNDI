@@ -12,7 +12,7 @@ class ReservationData {
 	}
 
 	public function getPacient(){ return PacientData::getById($this->pacient_id); }
-	// public function getMedic(){ return MedicData::getById($this->medic_id); }
+	public function getMedic(){ return MedicData::getById($this->funci_id1); }
 	public function getStatus(){ return StatusData::getById($this->status_id); }
 	public function getPayment(){ return PaymentData::getById($this->payment_id); }
 
@@ -103,7 +103,7 @@ class ReservationData {
 	}
 
 	public static function getAllByMedicId($id){
-		$sql = "select * from ".self::$tablename." where medic_id=$id order by date_at";
+		$sql = "select * from ".self::$tablename." where funci_id1=$id order by date_at";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ReservationData());
 	}
@@ -127,5 +127,3 @@ class ReservationData {
 
 
 }
-
-?>

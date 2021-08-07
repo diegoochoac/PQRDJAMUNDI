@@ -16,6 +16,7 @@
   <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
   <?php if (isset($_GET["view"]) && $_GET["view"] == "home") : ?>
+    
     <link href='assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
     <link href='assets/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
     <script src='assets/fullcalendar/moment.min.js'></script>
@@ -34,7 +35,7 @@
           <a href="./" class="simple-text">
             Salud PQRD
           </a>
-          <img src="image/jamundi.png"  width="150" height="150">
+          <img src="image/jamundi.png" width="150" height="150">
         </div>
 
         <div class="sidebar-wrapper">
@@ -58,11 +59,11 @@
               </a>
             </li>
             <li>
-                      <a href="./?view=medics">
-                          <i class="fa fa-support"></i>
-                          <p>Funcionarios</p>
-                      </a>
-                  </li> 
+              <a href="./?view=medics">
+                <i class="fa fa-support"></i>
+                <p>Funcionarios</p>
+              </a>
+            </li>
             <!-- <li>
                       <a href="./?view=categories">
                           <i class="fa fa-th-list"></i>
@@ -75,12 +76,18 @@
                 <p>Reporte de PQRD</p>
               </a>
             </li>-->
-            <li> 
-              <a href="./?view=users">
-                <i class="fa fa-users"></i>
-                <p>Usuarios</p>
-              </a>
-            </li>
+            <?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
+            ?>
+              <li>
+                <a href="./?view=users">
+                  <i class="fa fa-users"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li>
+            <?php
+            }
+            ?>
+
           </ul>
         </div>
 

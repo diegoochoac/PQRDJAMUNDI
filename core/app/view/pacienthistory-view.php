@@ -19,21 +19,29 @@ $pacient = PacientData::getById($_GET["id"]);
 				?>
 					<table class="table table-bordered table-hover">
 						<thead>
-							<th>Solicitud</th>
-							<th>Peticionario</th>
-							<th>Fecha</th>
-							<th>Estado</th>
+							<th>Número del Caso</th>
+							<th>Tipo de Caso</th>
+							<th>Estado del Caso</th>
+							<th>EPS</th>
+							<th>Condición del Afectado</th>
+							<th>Funcionario Atención</th>
+							<th>Número de PQRD SISNET</th>
+							<th>Fecha Creación</th>
 						</thead>
 						<?php
 						foreach ($users as $user) {
-							$pacient  = $user->getPacient();
+							// $pacient  = $user->getPacient();
 							// $medic = $user->getMedic();
 						?>
 							<tr>
-								<td><?php echo $user->title; ?></td>
-								<td><?php echo $pacient->name . " " . $pacient->lastname; ?></td>
-								<td><?php echo $medic->name . " " . $pacient->lastname; ?></td>
-								<td><?php echo $user->date_at . " " . $user->time_at; ?></td>
+								<td><?php echo $user->id; ?></td>
+								<td><?php echo $user->typecase; ?></td>
+								<td><?php echo $user->status_id; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
+								<td><?php echo $user->conafec ?></td>
+								<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+								<td><?php echo $user->numrad; ?></td>
+								<td><?php echo $user->date_at; ?></td>
 							</tr>
 						<?php
 
