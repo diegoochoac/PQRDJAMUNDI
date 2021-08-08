@@ -9,7 +9,7 @@
 if (count($_POST) > 0) {
 	$user = new PacientData();
 
-	$user->id_pacientp = $_POST["id_pacientp"];
+	//$user->id_pacientp = $_POST["id_pacientp"];
 	$user->name = $_POST["name"];
 	$user->lastname = $_POST["lastname"];
 	$user->typedoc = $_POST["typedoc"];
@@ -17,6 +17,7 @@ if (count($_POST) > 0) {
 	$user->day_of_birth = $_POST["day_of_birth"];
 	$user->age = $_POST["age"];
 	$user->typepobla = $_POST["typepobla"];
+	$user->typepobla2 = $_POST["typepobla2"];
 
 	$user->gender = $_POST["gender"];
 	$user->gender2 = $_POST["gender2"];
@@ -38,6 +39,6 @@ if (count($_POST) > 0) {
 
 	$user->add();
 
-	Core::alert("Creado exitosamente!");
+	//Core::alert("Creado exitosamente!");
 	print "<script>window.location='index.php?view=pacients';</script>";
 }

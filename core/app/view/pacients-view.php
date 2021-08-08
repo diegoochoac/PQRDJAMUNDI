@@ -2,7 +2,7 @@
 if (isset($_SESSION['user_id'])) {
 	$user_id = $_SESSION['user_id'];
 } else {
-	header('Location: index.php'); 
+	header('Location: index.php');
 	die();
 }
 ?>
@@ -139,7 +139,12 @@ if (isset($_SESSION['user_id'])) {
 						<!-- <a href="index.php?view=newreservation&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Nuevo PQRD</a> -->
 						<a href="index.php?view=pacienthistory&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Historial</a>
 						<a href="index.php?view=editpacient&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
-						<!-- <a href="index.php?view=delpacient&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a> -->
+						<?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
+						?>
+							<a href="index.php?view=delpacient&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
+						<?php
+							}
+						?>
 					</td>
 					</tr>
 				<?php

@@ -19,8 +19,8 @@ class ReservationData {
 	public function add(){
 		// $sql = "insert into reservation (title,note,medic_id,date_at,time_at,pacient_id,user_id,price,status_id,payment_id,sick,symtoms,medicaments,created_at) ";
 		// $sql .= "value (\"$this->title\",\"$this->note\",\"$this->medic_id\",\"$this->date_at\",\"$this->time_at\",$this->pacient_id,$this->user_id,\"$this->price\",$this->status_id,$this->payment_id,\"$this->sick\",\"$this->symtoms\",\"$this->medicaments\",$this->created_at)";
-		$sql = "insert into reservation (date_at,description,typecase,typeevent,conafec,numrad,encontrol,orpeticion,funci_id1,funci_id2,chcomun,atrcalidad,pacient_id,pacientp_id,status_id) ";
-		$sql .= "value (\"$this->date_at\",\"$this->description\",\"$this->typecase\",\"$this->typeevent\",\"$this->conafec\",\"$this->numrad\",\"$this->encontrol\",\"$this->orpeticion\",\"$this->funci_id1\",\"$this->funci_id2\",\"$this->chcomun\",\"$this->atrcalidad\",$this->pacient_id,$this->pacientp_id,\"$this->status_id\")";
+		$sql = "insert into reservation (user_id,date_at,description,typecase,typeevent,conafec,numrad,encontrol,orpeticion,funci_id1,funci_id2,chcomun,atrcalidad,pacient_id,pacientp_id,status_id,created_at) ";
+		$sql .= "value ($this->user_id,\"$this->date_at\",\"$this->description\",\"$this->typecase\",\"$this->typeevent\",\"$this->conafec\",\"$this->numrad\",\"$this->encontrol\",\"$this->orpeticion\",\"$this->funci_id1\",\"$this->funci_id2\",\"$this->chcomun\",\"$this->atrcalidad\",$this->pacient_id,$this->pacientp_id,\"$this->status_id\",$this->created_at)";
 		echo $sql;
 		
 		return Executor::doit($sql);

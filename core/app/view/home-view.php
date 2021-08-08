@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_SESSION['user_id'])) {
 	$user_id = $_SESSION['user_id'];
 } else {
@@ -11,7 +12,9 @@ if (isset($_SESSION['user_id'])) {
 $thejson = null;
 $events = ReservationData::getEvery();
 foreach ($events as $event) {
-	$thejson[] = array("title" => $event->typecase, "url" => "./?view=editreservation&id=" . $event->id, "start" => $event->date_at);
+	$thejson[] = array("title" => $event->typecase." #Caso: ".$event->id  ,  "start" => $event->date_at);
+
+	//$thejson[] = array("title" => $event->typecase, "url" => "./?view=editreservation&id=" . $event->id, "start" => $event->date_at);
 }
 ?>
 <script>

@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Nombres*</label>
               <div class="col-lg-3">
-                <input type="text" name="namepeticionario" required class="form-control" id="namepeticionario" placeholder="Nombres del Contacto">
+                <input type="text" name="name" required class="form-control" id="namepeticionario" placeholder="Nombres del Contacto">
               </div>
             </div>
             <div class="col-4">
@@ -87,9 +87,9 @@ if (isset($_SESSION['user_id'])) {
               <div class="col-lg-3">
                 <select name="gender2" class="form-control" required>
                   <option value="">-- SELECCIONE --</option>
-                  <option value="Heterosexual">Heterosexual</option>
-                  <option value="Homosexual">Homosexual</option>
-                  <option value="Bisexual">Bisexual</option>
+                  <option value="Hetero ">Heterosexual</option>
+                  <option value="Homo">Homosexual</option>
+                  <option value="Bi">Bisexual</option>
                 </select>
               </div>
             </div>
@@ -99,7 +99,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Poblacion Especial*</label>
               <div class="col-md-3">
-                <select name="tipopoblacionespecial" class="form-control" required>
+                <select name="typepobla2" class="form-control" required>
                   <option value="">-- SELECCIONE --</option>
                   <option value="No Aplica">No Aplica</option>
                   <option value="Desplazado">Desplazado</option>
@@ -118,7 +118,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Clasificacion de poblacion*</label>
               <div class="col-md-3">
-                <select name="tipopoblacion" class="form-control" required>
+                <select name="typepobla" class="form-control" required>
                   <option value="">-- SELECCIONE --</option>
                   <option value="No Aplica">No Aplica</option>
                   <option value="Afrocolombiano">Afrocolombiano</option>
@@ -132,7 +132,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Discapacidad*</label>
               <div class="col-md-3">
-                <select name="tipodiscapacidad" class="form-control" required>
+                <select name="typedisca" class="form-control" required>
                   <option value="">-- SELECCIONE --</option>
                   <option value="Ninguna">Ninguna</option>
                   <option value="Visual">Visual</option>
@@ -150,13 +150,13 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">No Telefono Fijo*</label>
               <div class="col-md-3">
-                <input type="text" name="phone1" required class="form-control" id="phone1peticionario" placeholder="Telefono Fijo">
+                <input type="text" name="phone" required class="form-control" id="phone1peticionario" placeholder="Telefono Fijo">
               </div>
             </div>
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">No Telefono Celular*</label>
               <div class="col-md-3">
-                <input type="text" name="phone2" required class="form-control" id="phone2peticionario" placeholder="Telefono celular">
+                <input type="text" name="phonecel" required class="form-control" id="phone2peticionario" placeholder="Telefono celular">
               </div>
             </div>
           </div>
@@ -230,7 +230,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Tipo de Regimen*</label>
               <div class="col-md-3">
-                <select name="tiporegimen" class="form-control" required>
+                <select name="typereg" class="form-control" required>
                   <option value="">-- SELECCIONE --</option>
                   <option value="Contributivo">Contributivo</option>
                   <option value="Subsidiado">Subsidiado</option>

@@ -3,7 +3,7 @@
 if(count($_POST)>0){
 	$user = PacientData::getById($_POST["user_id"]);
 	
-	$user->id_pacientp = $_POST["id_pacientp"];
+	//$user->id_pacientp = $_POST["id_pacientp"];
 	$user->name = $_POST["name"];
 	$user->lastname = $_POST["lastname"];
 	$user->typedoc = $_POST["typedoc"];
@@ -11,6 +11,7 @@ if(count($_POST)>0){
 	$user->day_of_birth = $_POST["day_of_birth"];
 	$user->age = $_POST["age"];
 	$user->typepobla = $_POST["typepobla"];
+	$user->typepobla2 = $_POST["typepobla2"];
 
 	$user->gender = $_POST["gender"];
 	$user->gender2 = $_POST["gender2"];

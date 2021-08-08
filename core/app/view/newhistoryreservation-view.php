@@ -26,10 +26,7 @@ if (isset($_SESSION['user_id'])) {
         <!-- <form class="form-horizontal" role="form" method="post" action="./?action=addhistoryreservation"> -->
         <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=addhistoryreservation" role="form">
 
-          <div class="col-lg-3">
-            <input type="text" name="reservation_id" required class="form-control" id="nameafectado" value="<?php echo $_GET["id"] ?>">
-          </div>
-          <br><br><br><br>
+          
 
           <!-- 3 -->
           <div class="row">
@@ -135,6 +132,7 @@ if (isset($_SESSION['user_id'])) {
                 <div class="col-lg-3">
                   <select name="entidadtraslado" class="form-control" required>
                     <option value="">-- SELECCIONE --</option>
+                    <option value="NO Aplica"> NO Aplica</option>
                     <option value="Superintendencia de salud"> Superintendencia de salud</option>
                     <option value="Secretaría de salud Departamental"> Secretaría de salud Departamental</option>
                     <option value="Otro"> Otro</option>
@@ -184,6 +182,12 @@ if (isset($_SESSION['user_id'])) {
               </div>
             </div>
           </div>
+
+          <div class="col-lg-3">
+            <input type="hidden" name="reservation_id" required class="form-control" id="nameafectado" value="<?php echo $_GET["id"] ?>">
+          </div>
+          <br><br><br><br>
+
           <hr>
 
 

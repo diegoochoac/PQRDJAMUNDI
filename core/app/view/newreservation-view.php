@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
   <div class="col-md-12">
     <div class="card">
       <div class="card-header" data-background-color="blue">
-        <h4>Nueva Atención PQRD</h4>
+        <h4>Nueva Atención</h4>
         <!-- <?php $idultimo = ReservationData::getEndId(); ?> -->
 
         <?php
@@ -680,10 +680,10 @@ if (isset($_SESSION['user_id'])) {
               <div class="row">
                 <div class="col-4">
                   <div class="col-4">
-                    <input type="text" name="pacient_id" required class="col-lg-2 control-label" value="<?php echo $userA->id; ?>">
+                    <input type="hidden" name="pacient_id" required class="col-lg-2 control-label" value="<?php echo $userA->id; ?>">
                   </div>
                   <div class="col-4">
-                    <input type="text" name="pacientp_id" required class="col-lg-2 control-label" value="<?php echo $userP->id; ?>">
+                    <input type="hidden" name="pacientp_id" required class="col-lg-2 control-label" value="<?php echo $userP->id; ?>">
                   </div>
                 </div>
               </div>

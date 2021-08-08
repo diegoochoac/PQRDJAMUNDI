@@ -41,8 +41,8 @@ if (count($_POST) > 0) {
 
 
     Core::alert("Creado exitosamente!");
-    //  print "<script>window.location='index.php?view=reservationhistory&id='".reservation_id.";</script>;"
-
+    //  print "<script>window.location='index.php?view=reservationhistory&id=';</script>;"
+    print "<script>window.location='index.php?view=reservations';</script>";
     //		$sql = "insert into ".self::$tablename." (name,lastname,cc,gender,day_of_birth,address,phone,email,sick,medicaments,alergy,created_at) ";
 
 }
