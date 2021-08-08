@@ -4,6 +4,7 @@ class Database {
 	public static $con;
 	function Database(){
 		$this->user="root";$this->pass="";$this->host="localhost";$this->ddbb="bookmedik";
+		//$this->user="admin";$this->pass="rootadmin";$this->host="localhost";$this->ddbb="bookmedik";	//server
 	}
 
 	function connect(){

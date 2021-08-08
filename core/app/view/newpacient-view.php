@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['user_id'])) {
+  $user_id = $_SESSION['user_id'];
+} else {
+  header('Location: index.php');
+  die();
+}
+?>
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -41,7 +50,7 @@
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">No Documento Identidad</label>
               <div class="col-md-3">
-                <input type="text" name="numdoc" required class="form-control" id="lastname" placeholder="Número Documento Contacto" >
+                <input type="text" name="numdoc" required class="form-control" id="lastname" placeholder="Número Documento Contacto">
               </div>
             </div>
           </div>

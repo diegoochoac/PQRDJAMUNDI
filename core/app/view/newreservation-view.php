@@ -6,6 +6,15 @@ $medics = MedicData::getAll();
 $statuses = StatusData::getAll();
 $payments = PaymentData::getAll();
 
+
+if (isset($_SESSION['user_id'])) {
+  $user_id = $_SESSION['user_id'];
+} else {
+  header('Location: index.php');
+  die();
+}
+
+
 ?>
 
 <div class="row">
@@ -481,7 +490,7 @@ $payments = PaymentData::getAll();
 
                 <?php
                 if ((isset($_GET["namepeticionarioa"])) && ($_GET["namepeticionarioa"] != "") && $usersP == "") {
-                  PacientData::addForce($userP->id, $_GET["namepeticionarioa"], $_GET["lastnamea"], $_GET["typedoca"], $_GET["cca"], $_GET["phone1a"], $_GET["phone2a"], $_GET["emaila"], $_GET["gendera"], $_GET["day_of_birtha"], $_GET["agea"], $_GET["gender2a"], $_GET["tipodiscapacidada"], $_GET["addressa"], $_GET["address2a"],$_GET["address3a"],$_GET["address4a"], $_GET["epsa"], $_GET["tiporegimena"], $_GET["extranjeroa"], $_GET["extranjerostatea"], $_GET["tipopoblacionespeciala"]);
+                  PacientData::addForce($userP->id, $_GET["namepeticionarioa"], $_GET["lastnamea"], $_GET["typedoca"], $_GET["cca"], $_GET["phone1a"], $_GET["phone2a"], $_GET["emaila"], $_GET["gendera"], $_GET["day_of_birtha"], $_GET["agea"], $_GET["gender2a"], $_GET["tipodiscapacidada"], $_GET["addressa"], $_GET["address2a"], $_GET["address3a"], $_GET["address4a"], $_GET["epsa"], $_GET["tiporegimena"], $_GET["extranjeroa"], $_GET["extranjerostatea"], $_GET["tipopoblacionespeciala"]);
                   Core::redir("./index.php?view=newreservation&qa=" . $_GET["qa"] . "&qp=" . $_GET["qp"]);
                 }
                 ?>

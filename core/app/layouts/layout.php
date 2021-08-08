@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <title>Salud PQRD - Dashboard</title>
+  <title>Defensalud Jamundí - Dashboard</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -33,7 +33,7 @@
       <div class="sidebar" data-color="blue">
         <div class="logo">
           <a href="./" class="simple-text">
-            Salud PQRD
+            Defensalud
           </a>
           <img src="image/jamundi.png" width="150" height="150">
         </div>
@@ -49,13 +49,13 @@
             <li>
               <a href="./?view=reservations">
                 <i class="fa fa-calendar"></i>
-                <p>Atención PQRD</p>
+                <p>Atención Solicitudes</p>
               </a>
             </li>
             <li>
               <a href="./?view=pacients">
                 <i class="fa fa-male"></i>
-                <p>Afectados</p>
+                <p>Afectados/Peticionarios</p>
               </a>
             </li>
             <li>
@@ -81,7 +81,7 @@
               <li>
                 <a href="./?view=users">
                   <i class="fa fa-users"></i>
-                  <p>Usuarios</p>
+                  <p>Credenciales</p>
                 </a>
               </li>
             <?php
@@ -106,7 +106,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="./"><b>Sistema de Gestion Salud PQRD</b></a>
+              <a class="navbar-brand" href="./"><b>Jamundí defiende tu derecho a la salud</b></a>
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
@@ -156,9 +156,9 @@
                   </a>
                 </li>
                 <li>
-                  <a href="http://" target="_blank">
-                    Diego Ochoa Oficina TIC
-                  </a>
+                  <!-- <a href="http://" target="_blank">
+                    Oficina TIC - 8A
+                  </a> -->
                 </li>
                 <!--
               <li>
@@ -180,7 +180,7 @@
               </ul>
             </nav>
             <p class="copyright pull-right">
-              <a href="http://" target="_blank">Diego Ochoa Oficina TIC</a> &copy; 2021
+              <a href="http://" target="_blank">Oficina TIC - 8A</a> &copy; Agosto -2021
             </p>
           </div>
         </footer>

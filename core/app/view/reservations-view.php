@@ -1,13 +1,20 @@
+<?php
+if (isset($_SESSION['user_id'])) {
+	$user_id = $_SESSION['user_id'];
+} else {
+	header('Location: index.php'); 
+	die();
+}
+?>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="btn-group pull-right">
 
 		</div>
-
-
 		<div class="card">
 			<div class="card-header" data-background-color="blue">
-				<h4 class="title">Casos de Atención PQRD</h4>
+				<h4 class="title">Casos de Atención</h4>
 			</div>
 			<div class="card-content table-responsive">
 				<a href="./index.php?view=newreservation" class="btn btn-info">Crear Nuevo Caso</a>
@@ -155,7 +162,7 @@
 
 		<br>
 		<hr>
-		<h4 class="title">Lista de todos los Casos PQRD</h4>
+		<h4 class="title">Lista de todos los Casos</h4>
 
 		<?php
 

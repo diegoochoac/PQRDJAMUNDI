@@ -20,11 +20,13 @@ if (Session::getUID() != "") {
 
 			<div class="card">
 				<div class="card-header" data-background-color="blue">
-					<h4 class="title">Acceder a Salud PQRD</h4>
+					<h4 class="title">Defensalud Jamundí</h4>
 
 				</div>
 				<div class="card-content table-responsive">
-					<img src="image/jamundi.png" width="300" height="150">
+
+					<img src="image/jamundi.png" style="width:200px; height:200px">
+
 					<form accept-charset="UTF-8" role="form" method="post" action="index.php?view=processlogin">
 						<fieldset>
 							<div class="form-group">

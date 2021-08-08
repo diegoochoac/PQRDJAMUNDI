@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['user_id'])) {
+	$user_id = $_SESSION['user_id'];
+} else {
+	header('Location: index.php'); 
+	die();
+}
+?>
+
 <?php $user = PacientData::getById($_GET["id"]); ?>
 <div class="row">
   <div class="col-md-12">
