@@ -44,7 +44,9 @@ if (isset($_SESSION['user_id'])) {
 								<td style="width:280px;">
 									<a href="index.php?view=medichistory&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Historial</a>
 									<a href="index.php?view=editmedic&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
-									<!-- <a href="index.php?view=delmedic&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a> -->
+									
+									<a href="index.php?view=delmedic&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
+								
 								</td>
 							</tr>
 						<?php

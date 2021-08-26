@@ -115,7 +115,7 @@ if (isset($_SESSION['user_id'])) {
 				?>
 					<table class="table table-bordered table-hover">
 						<thead>
-							<th>Número del Caso</th>
+							<th id="id" name="id">Número del Caso</th>
 							<th>Tipo de Caso</th>
 							<th>Estado del Caso</th>
 							<th>Nombre Afectado</th>
@@ -129,7 +129,7 @@ if (isset($_SESSION['user_id'])) {
 						<?php
 						foreach ($users as $user) {
 							$pacient  = $user->getPacient();
-							//$medic = $user->getMedic();
+							$medic = $user->getMedic();
 						?>
 							<tr>
 								<td><?php echo $user->id; ?></td>
@@ -204,6 +204,9 @@ if (isset($_SESSION['user_id'])) {
 						<td><?php echo $user->date_at; ?></td>
 						<td style="width:180px;">
 							<a href="index.php?view=reservationhistory&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Seguimiento</a>
+							
+							<a href="./report/report-reservation-pdf.php?id=<?php echo $user->id; ?>"  method="POST" class="btn btn-default btn-xs"> Descargar (PDF)</a>
+
 							<?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
 							?>
 								<a href="index.php?view=editreservation&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>	

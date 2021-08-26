@@ -73,9 +73,9 @@
             <!-- <li>
               <a href="./?view=reports">
                 <i class="fa fa-area-chart"></i>
-                <p>Reporte de PQRD</p>
+                <p>Reportes</p>
               </a>
-            </li>-->
+            </li> -->
             <?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
             ?>
               <li>

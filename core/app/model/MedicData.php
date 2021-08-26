@@ -24,6 +24,7 @@ class MedicData {
 	}
 	public function del(){
 		$sql = "delete from ".self::$tablename." where id=$this->id";
+		//echo $sql;
 		Executor::doit($sql);
 	}
 
@@ -65,7 +66,7 @@ class MedicData {
 	}
 
 
-	public function getUnreads(){ return MessageData::getUnreadsByClientId($this->id); }
+	// public function getUnreads(){ return MessageData::getUnreadsByClientId($this->id); }
 
 
 	public static function getLike($q){

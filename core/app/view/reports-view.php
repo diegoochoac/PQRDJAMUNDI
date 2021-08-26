@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id'])) {
 					$pacients = PacientData::getAll();
 					$medics = MedicData::getAll();
 					$statuses = StatusData::getAll();
-					$payments = PaymentData::getAll();
+					// $payments = PaymentData::getAll();
 					?>
 
 					<div class="form-group">
@@ -31,7 +31,7 @@ if (isset($_SESSION['user_id'])) {
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-male"></i></span>
 								<select name="pacient_id" class="form-control">
-									<option value="">PACIENTE</option>
+									<option value="">AFECTADO</option>
 									<?php foreach ($pacients as $p) : ?>
 										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["pacient_id"]) && $_GET["pacient_id"] == $p->id) {
 																					echo "selected";
@@ -43,10 +43,10 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-lg-3">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-support"></i></span>
-								<select name="medic_id" class="form-control">
-									<option value="">MEDICO</option>
+								<select name="funci_id1" class="form-control">
+									<option value="">FUNCIONARIO</option>
 									<?php foreach ($medics as $p) : ?>
-										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["medic_id"]) && $_GET["medic_id"] == $p->id) {
+										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["funci_id1"]) && $_GET["funci_id1"] == $p->id) {
 																					echo "selected";
 																				} ?>><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
 									<?php endforeach; ?>
@@ -85,7 +85,7 @@ if (isset($_SESSION['user_id'])) {
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-3">
+						<!-- <div class="col-lg-3">
 							<div class="input-group">
 								<span class="input-group-addon">PAGO</span>
 								<select name="payment_id" class="form-control">
@@ -96,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
 									<?php endforeach; ?>
 								</select>
 							</div>
-						</div>
+						</div> -->
 						<div class="col-lg-6">
 							<button class="btn btn-primary btn-block">Procesar</button>
 						</div>
@@ -106,39 +106,31 @@ if (isset($_SESSION['user_id'])) {
 
 				<?php
 				$users = array();
-				if ((isset($_GET["status_id"]) && isset($_GET["payment_id"]) && isset($_GET["pacient_id"]) && isset($_GET["medic_id"]) && isset($_GET["start_at"]) && isset($_GET["finish_at"])) && ($_GET["status_id"] != "" || $_GET["payment_id"] != "" || $_GET["pacient_id"] != "" || $_GET["medic_id"] != "" || ($_GET["start_at"] != "" && $_GET["finish_at"] != ""))) {
+				if ((isset($_GET["status_id"])  && isset($_GET["pacient_id"]) && isset($_GET["funci_id1"]) && isset($_GET["start_at"]) && isset($_GET["finish_at"])) && ($_GET["status_id"] != ""  || $_GET["pacient_id"] != "" || $_GET["funci_id1"] != "" || ($_GET["start_at"] != "" && $_GET["finish_at"] != ""))) {
 					$sql = "select * from reservation where ";
 					if ($_GET["status_id"] != "") {
 						$sql .= " status_id = " . $_GET["status_id"];
 					}
 
-					if ($_GET["payment_id"] != "") {
-						if ($_GET["status_id"] != "") {
-							$sql .= " and ";
-						}
-						$sql .= " payment_id = " . $_GET["payment_id"];
-					}
-
-
 					if ($_GET["pacient_id"] != "") {
-						if ($_GET["status_id"] != "" || $_GET["payment_id"] != "") {
+						if ($_GET["status_id"] != "" ) {
 							$sql .= " and ";
 						}
 						$sql .= " pacient_id = " . $_GET["pacient_id"];
 					}
 
-					if ($_GET["medic_id"] != "") {
-						if ($_GET["status_id"] != "" || $_GET["pacient_id"] != "" || $_GET["payment_id"] != "") {
+					if ($_GET["funci_id1"] != "") {
+						if ($_GET["status_id"] != "" || $_GET["pacient_id"] != "") {
 							$sql .= " and ";
 						}
 
-						$sql .= " medic_id = " . $_GET["medic_id"];
+						$sql .= " func_id1 = " . $_GET["func_id1"];
 					}
 
 
 
 					if ($_GET["start_at"] != "" && $_GET["finish_at"]) {
-						if ($_GET["status_id"] != "" || $_GET["pacient_id"] != "" || $_GET["medic_id"] != "" || $_GET["payment_id"] != "") {
+						if ($_GET["status_id"] != "" || $_GET["pacient_id"] != "" || $_GET["funci_id1"] != "" ) {
 							$sql .= " and ";
 						}
 
@@ -148,7 +140,8 @@ if (isset($_SESSION['user_id'])) {
 					//echo $sql;
 					$users = ReservationData::getBySQL($sql);
 				} else {
-					$users = ReservationData::getAllPendings();
+					//$users = ReservationData::getAllPendings();
+					$users = ReservationData::getAll();
 				}
 				if (count($users) > 0) {
 					// si hay usuarios
@@ -159,13 +152,15 @@ if (isset($_SESSION['user_id'])) {
 							Reportes</div>
 						<table class="table table-bordered table-hover">
 							<thead>
-								<th>Asunto</th>
-								<th>Paciente</th>
-								<th>Medico</th>
-								<th>Fecha</th>
-								<th>Estado</th>
-								<th>Pago</th>
-								<th>Costo</th>
+								<th>Número del Caso</th>
+								<th>Tipo de Caso</th>
+								<th>Estado del Caso</th>
+								<th>EPS</th>
+								<th>Condición del Afectado</th>
+								<th>Funcionario Atención</th>
+								<th>Número de PQRD SISNET</th>
+								<th>Fecha Creación</th>
+
 							</thead>
 							<?php
 							$total = 0;
@@ -174,33 +169,31 @@ if (isset($_SESSION['user_id'])) {
 								$medic = $user->getMedic();
 							?>
 								<tr>
-									<td><?php echo $user->title; ?></td>
-									<td><?php echo $pacient->name . " " . $pacient->lastname; ?></td>
-									<td><?php echo $medic->name . " " . $medic->lastname; ?></td>
-									<td><?php echo $user->date_at . " " . $user->time_at; ?></td>
-									<td><?php echo $user->getStatus()->name; ?></td>
-									<td><?php echo $user->getPayment()->name; ?></td>
-									<td>$ <?php echo number_format($user->price, 2, ".", ","); ?></td>
+									<td><?php echo $user->id; ?></td>
+									<td><?php echo $user->typecase; ?></td>
+									<td><?php echo $user->status_id; ?></td>
+									<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
+									<td><?php echo $user->conafec ?></td>
+									<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+									<td><?php echo $user->numrad; ?></td>
+									<td><?php echo $user->date_at; ?></td>
+
 								</tr>
 							<?php
-								$total += $user->price;
+								// $total += $user->price;
 							}
 							echo "</table>";
 							?>
 							<div class="panel-body">
-								<h1>Total: $ <?php echo number_format($total, 2, ".", ","); ?></h1>
-								<a href="./report/report-word.php" class="btn btn-default"><i class="fa fa-download"> Descargar (.docx)</i></a>
+								<!-- <h1>Total: $ <?php echo number_format($total, 2, ".", ","); ?></h1> -->
+								<a href="./report/report-pdf.php" class="btn btn-default"><i class="fa fa-download"> Descargar (.docx)</i></a>
 
 							</div>
 						<?php
 
-
-
 					} else {
 						echo "<p class='alert alert-danger'>No hay pacientes</p>";
 					}
-
-
 						?>
 
 					</div>
