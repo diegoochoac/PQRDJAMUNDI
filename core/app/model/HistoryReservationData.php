@@ -19,7 +19,7 @@ class HistoryReservationData {
 	public function add(){
 		$sql = "insert into historyreservation (rad,rad_prorroga,f_prorroga,f_cierre,tiposeguimiento,diagnostico,llamada,estado,rad_cierre,rad_traslado,f_traslado,entidadtraslado,tipoevento,descripcion,reservation_id,created_at) ";
 		$sql .= "value (\"$this->rad\",\"$this->rad_prorroga\",\"$this->f_prorroga\",\"$this->f_cierre\",\"$this->tiposeguimiento\",\"$this->diagnostico\",\"$this->llamada\",\"$this->estado\",\"$this->rad_cierre\",\"$this->rad_traslado\",\"$this->f_traslado\",\"$this->entidadtraslado\",\"$this->tipoevento\",\"$this->descripcion\",\"$this->reservation_id\",$this->created_at)";
-		echo $sql;
+		//echo $sql;
 		return Executor::doit($sql);
 	}
 

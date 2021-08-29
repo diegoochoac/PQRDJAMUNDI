@@ -50,7 +50,7 @@ if (isset($_SESSION['user_id'])) {
 									<?php foreach ($pacients as $p) : ?>
 										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["pacient_id"]) && $_GET["pacient_id"] == $p->id) {
 																					echo "selected";
-																				} ?>><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
+																				} ?>><?php echo $p->name . " " . $p->lastname; ?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id'])) {
 									<?php foreach ($medics as $p) : ?>
 										<option value="<?php echo $p->id; ?>" <?php if (isset($_GET["medic_id"]) && $_GET["medic_id"] == $p->id) {
 																					echo "selected";
-																				} ?>><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
+																				} ?>><?php echo $p->name . " " . $p->lastname; ?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
@@ -119,32 +119,49 @@ if (isset($_SESSION['user_id'])) {
 							<th>Tipo de Caso</th>
 							<th>Estado del Caso</th>
 							<th>Nombre Afectado</th>
-							<th>Apellido Afectado</th>
+							<th>Documento Afectado</th>
 							<th>EPS</th>
 							<th>Condición del Afectado</th>
 							<th>Funcionario Atención</th>
 							<th>Número de PQRD SISNET</th>
 							<th>Fecha Creación</th>
+							<th>Fecha Vencimineto</th>
+							<th>Dias restantes</th>
 						</thead>
 						<?php
+						$fechaActual = date('d-m-Y');
 						foreach ($users as $user) {
 							$pacient  = $user->getPacient();
 							$medic = $user->getMedic();
+
 						?>
 							<tr>
 								<td><?php echo $user->id; ?></td>
 								<td><?php echo $user->typecase; ?></td>
 								<td><?php echo $user->status_id; ?></td>
-								<td><?php echo PacientData::getById($user->pacient_id)->name; ?></td>
-								<td><?php echo PacientData::getById($user->pacient_id)->lastname; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->name . " " . PacientData::getById($user->pacient_id)->lastname; ?></td>
+								<td><?php echo PacientData::getById($user->pacient_id)->numdoc; ?></td>
 								<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
 								<td><?php echo $user->conafec ?></td>
 								<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
 								<td><?php echo $user->numrad; ?></td>
 								<td><?php echo $user->date_at; ?></td>
+								<td><?php echo $user->end_at; ?></td>
+								<td><?php echo  date('d', abs(strtotime($user->end_at) - strtotime($fechaActual))); ?></td>
 								<td style="width:180px;">
+
+									<a href="index.php?view=reservationhistory&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Seguimiento</a>
+
+									<a href="./report/report-reservation-pdf.php?id=<?php echo $user->id; ?>" method="POST" class="btn btn-default btn-xs"> Descargar (PDF)</a>
+
 									<a href="index.php?view=editreservation&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
-									<a href="index.php?action=delreservation&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
+
+									<?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
+									?>
+										<a href="index.php?action=delreservation&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
+									<?php
+									}
+									?>
 								</td>
 							</tr>
 						<?php
@@ -180,36 +197,42 @@ if (isset($_SESSION['user_id'])) {
 					<th>Tipo de Caso</th>
 					<th>Estado del Caso</th>
 					<th>Nombre Afectado</th>
-					<th>Apellido Afectado</th>
+					<th>Documento Afectado</th>
 					<th>EPS</th>
 					<th>Condición del Afectado</th>
 					<th>Funcionario Atención</th>
 					<th>Número de PQRD SISNET</th>
 					<th>Fecha Creación</th>
+					<th>Fecha Vencimineto</th>
+					<th>Dias restantes</th>
 					<th></th>
 				</thead>
 				<?php
+						$fechaActual = date('d-m-Y');
 						foreach ($users as $user) {
 				?>
 					<tr>
 						<td><?php echo $user->id; ?></td>
 						<td><?php echo $user->typecase; ?></td>
 						<td><?php echo $user->status_id; ?></td>
-						<td><?php echo PacientData::getById($user->pacient_id)->name; ?></td>
-						<td><?php echo PacientData::getById($user->pacient_id)->lastname; ?></td>
+						<td><?php echo PacientData::getById($user->pacient_id)->name . " " . PacientData::getById($user->pacient_id)->lastname; ?></td>
+						<td><?php echo PacientData::getById($user->pacient_id)->numdoc; ?></td>
 						<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
 						<td><?php echo $user->conafec ?></td>
 						<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
 						<td><?php echo $user->numrad; ?></td>
 						<td><?php echo $user->date_at; ?></td>
+						<td><?php echo $user->end_at; ?></td>
+						<td><?php echo  date('d', abs(strtotime($user->end_at) - strtotime($fechaActual))); ?></td>
+
 						<td style="width:180px;">
 							<a href="index.php?view=reservationhistory&id=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Seguimiento</a>
-							
-							<a href="./report/report-reservation-pdf.php?id=<?php echo $user->id; ?>"  method="POST" class="btn btn-default btn-xs"> Descargar (PDF)</a>
+							<a href="./report/report-reservation-pdf.php?id=<?php echo $user->id; ?>" method="POST" class="btn btn-default btn-xs"> Descargar (PDF)</a>
+							<a href="index.php?view=editreservation&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
+							<!-- <a href="index.php?action=delreservation&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a> -->
 
 							<?php if (UserData::getById($_SESSION["user_id"])->is_admin) {
 							?>
-								<a href="index.php?view=editreservation&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>	
 								<a href="index.php?action=delreservation&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
 							<?php
 							}

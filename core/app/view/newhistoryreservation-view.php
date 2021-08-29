@@ -78,13 +78,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="inputEmail1" class="col-lg-2 control-label">Diagnostico</label>
-            <div class="col-lg-5">
-              <textarea class="form-control" name="diagnostico" placeholder=""></textarea>
-            </div>
-          </div>
-          <hr>
+        
 
           <div class="form-group">
             <label for="inputEmail1" class="col-lg-2 control-label">Descripción de la Solicitud</label>

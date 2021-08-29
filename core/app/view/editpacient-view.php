@@ -13,7 +13,7 @@ if (isset($_SESSION['user_id'])) {
 
     <div class="card">
       <div class="card-header" data-background-color="blue">
-        <h4 class="title">Editar Paciente</h4>
+        <h4 class="title">Editar Afectado</h4>
       </div>
       <div class="card-content table-responsive">
         <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=updatepacient" role="form">

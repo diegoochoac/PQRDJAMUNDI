@@ -1,0 +1,34 @@
+Pendintes plaaforma
+
+OK  -correguir el actualizar funcionario
+
+
+OK  -Los listados de funcionarios quitar el ID visible
+
+OK  -boton de agregar peticionario- aparece como agregar afectado correguir
+
+OK  -la variable autoreconocimiento esta obligatoria debe ser opcional
+
+OK  -newreservation - label fecha/hora - solo deberia ser fecha
+
+OK  -Entes de control- agregar no Aplica
+
+OK  -Quitar gestion 
+
+OK  -Numero de sisnet no es obligatorio
+
+OK  -despues de agregar muestra la consulta sql
+
+OK  -lista de todos los casos mostrar el numero de cedula
+
+OK  deiagnostico pasar a la pantalla de crear solicitud
+
+
+Fecha de cierre de caso son 15 dias se debe mostrar en la lista de todos los casos adicional colocar un contador de dias 
+
+
+Seguimientos debe tener la opcion de editar
+
+OK  Filtrar colocar el boton de seguimiento y de generacion del pdf
+
+OK  Quitar el eliminar Solo el admin

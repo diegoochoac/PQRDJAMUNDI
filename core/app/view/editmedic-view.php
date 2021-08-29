@@ -16,13 +16,13 @@ if (isset($_SESSION['user_id'])) {
 
 <div class="card">
   <div class="card-header" data-background-color="blue">
-      <h4 class="title">Editar Medico</h4>
+      <h4 class="title">Editar Funcionario</h4>
   </div>
   <div class="card-content table-responsive">
 		<form class="form-horizontal" method="post" id="addproduct" action="index.php?view=updatemedic" role="form">
 
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Area*</label>
     <div class="col-md-6">
     <select name="category_id" class="form-control">
@@ -32,7 +32,7 @@ if (isset($_SESSION['user_id'])) {
     <?php endforeach;?>
     </select>
     </div>
-  </div>
+  </div> -->
 
   <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Nombre*</label>
@@ -69,7 +69,7 @@ if (isset($_SESSION['user_id'])) {
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
     <input type="hidden" name="user_id" value="<?php echo $user->id;?>">
-      <button type="submit" class="btn btn-primary">Actualizar Medico</button>
+      <button type="submit" class="btn btn-primary">Actualizar Funcionario</button>
     </div>
   </div>
 </form>

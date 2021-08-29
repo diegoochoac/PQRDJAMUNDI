@@ -27,7 +27,7 @@ class PacientDataP
 	{
 		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone1,phone2,email,created_at) ";
 		$sql .= "value (\"$nameq\",\"$lastnameq\",\"$typedocq\",$numdocq,\"$phone1q\",\"$phone2q\",\"$emailq\",NOW())";
-		echo $sql;
+		//echo $sql;
 		try {
 			Executor::doit($sql);
 		} catch (Exception $e) {

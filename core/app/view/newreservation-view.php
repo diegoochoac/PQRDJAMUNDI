@@ -154,7 +154,7 @@ if (isset($_SESSION['user_id'])) {
 
                     <div class="form-group">
                       <div class="col-lg-offset-4 col-lg-10">
-                        <button type="submit" class="btn btn-primary">Agregar Afectado</button>
+                        <button type="submit" class="btn btn-primary">Agregar Peticionario</button>
                       </div>
                     </div>
                   </form>
@@ -297,10 +297,11 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                       </div>
                       <div class="col-4">
-                        <label for="inputEmail1" class="col-lg-2 control-label">Usted se Autoreconoce como*</label>
+                        <label for="inputEmail1" class="col-lg-2 control-label">Usted se Autoreconoce como</label>
                         <div class="col-lg-3">
-                          <select name="gender2a" class="form-control" required>
+                          <select name="gender2a" class="form-control">
                             <option value="">-- SELECCIONE --</option>
+                            <option value="No Aplica">No Aplica</option>
                             <option value="Heterosexual">Heterosexual</option>
                             <option value="Homosexual">Homosexual</option>
                             <option value="Bisexual">Bisexual</option>
@@ -466,6 +467,10 @@ if (isset($_SESSION['user_id'])) {
                             <option value="Otro">Otro</option>
                           </select>
                         </div>
+                        <label for="inputEmail1" class="col-lg-2 control-label">Otro</label>
+                        <div class="col-md-3">
+                          <input type="text" name="extranjeroa" id="extranjeroa" class="form-control" placeholder="Rellene aqui si seleciono Otro"/>
+                        </div>
                       </div>
                       <div class="col-4">
                         <label for="inputEmail1" class="col-lg-2 control-label">Especifique si el Extranjero esta*</label>
@@ -526,7 +531,7 @@ if (isset($_SESSION['user_id'])) {
               </div>
 
               <div class="form-group">
-                <label for="inputEmail1" class="col-lg-2 control-label">Fecha/Hora Solicitud</label>
+                <label for="inputEmail1" class="col-lg-2 control-label">Fecha Solicitud</label>
                 <div class="col-lg-2">
                   <input type="date" name="date_at" readonly class="form-control" id="inputEmail1" value="<?= date('Y-m-d', time()); ?>" placeholder="Fecha">
                 </div>
@@ -534,12 +539,20 @@ if (isset($_SESSION['user_id'])) {
 
 
               <div class="form-group">
-                <label for="inputEmail1" class="col-lg-2 control-label">Descripción de la Petición</label>
+                <label for="inputEmail1" class="col-lg-2 control-label">Descripción de la Petición*</label>
                 <div class="col-lg-8">
-                  <textarea class="form-control" name="description" placeholder="Ingrese la descripción" cols="40" rows="8" style="resize: both"></textarea>
+                  <textarea class="form-control" required name="description" placeholder="Ingrese la descripción" cols="40" rows="8" style="resize: both"></textarea>
                 </div>
               </div>
               <br>
+
+              <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Diagnostico*</label>
+                <div class="col-lg-5">
+                  <textarea class="form-control" name="diagnostico" placeholder=""></textarea>
+                </div>
+              </div>
+              <hr>
 
               <div class="row">
                 <div class="col-4">
@@ -548,7 +561,6 @@ if (isset($_SESSION['user_id'])) {
                     <select name="typecase" class="form-control" required>
                       <option value="">-- SELECCIONE --</option>
                       <option value="Orientacion">Orientacion </option>
-                      <option value="Gestion">Gestion</option>
                       <option value="Radicación">Radicación </option>
                     </select>
                   </div>
@@ -593,10 +605,11 @@ if (isset($_SESSION['user_id'])) {
 
               <div class="row">
                 <div class="col-4">
-                  <label for="inputEmail1" class="col-lg-2 control-label">Entes de Control*</label>
+                  <label for="inputEmail1" class="col-lg-2 control-label">Entes de Control</label>
                   <div class="col-lg-3">
-                    <select name="encontrol" class="form-control" required>
+                    <select name="encontrol" class="form-control">
                       <option value="">-- SELECCIONE --</option>
+                      <option value="No Aplica">No Aplica </option>
                       <option value="Personeria Municipal">Personeria Municipal </option>
                       <option value="Veeduria Ciudadana">Veeduria Ciudadana</option>
                       <option value="Defensoria del Pueblo">Defensoria del Pueblo</option>
@@ -625,7 +638,7 @@ if (isset($_SESSION['user_id'])) {
                     <select name="funci_id1" class="form-control" required>
                       <option value="">-- SELECCIONE --</option>
                       <?php foreach ($medics as $p) : ?>
-                        <option value="<?php echo $p->id; ?>"><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
+                        <option value="<?php echo $p->id; ?>"><?php echo $p->name . " " . $p->lastname; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -637,7 +650,7 @@ if (isset($_SESSION['user_id'])) {
                     <select name="funci_id2" class="form-control" required>
                       <option value="">-- SELECCIONE --</option>
                       <?php foreach ($medics as $p) : ?>
-                        <option value="<?php echo $p->id; ?>"><?php echo $p->id . " - " . $p->name . " " . $p->lastname; ?></option>
+                        <option value="<?php echo $p->id; ?>"><?php echo $p->name . " " . $p->lastname; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -648,7 +661,7 @@ if (isset($_SESSION['user_id'])) {
 
               <div class="row">
                 <div class="col-4">
-                  <label for="inputEmail1" class="col-lg-2 control-label">Canal de recepción</label>
+                  <label for="inputEmail1" class="col-lg-2 control-label">Canal de recepción*</label>
                   <div class="col-lg-3">
                     <select name="chcomun" class="form-control" required>
                       <option value="">-- SELECCIONE --</option>
@@ -662,7 +675,7 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="col-4">
-                  <label for="inputEmail1" class="col-lg-2 control-label">Atributo de Calidad</label>
+                  <label for="inputEmail1" class="col-lg-2 control-label">Atributo de Calidad*</label>
                   <div class="col-lg-3">
                     <select name="atrcalidad" class="form-control" required>
                       <option value="">-- SELECCIONE --</option>
@@ -691,7 +704,7 @@ if (isset($_SESSION['user_id'])) {
               <hr>
               <div class="form-group">
                 <div class="col-lg-offset-5 col-lg-5">
-                  <button type="submit" class="btn btn-default">Agregar Petición</button>
+                  <button type="submit" class="btn btn-primary">Agregar Petición</button>
                 </div>
               </div>
 

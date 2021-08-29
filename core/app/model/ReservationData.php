@@ -16,12 +16,47 @@ class ReservationData {
 	public function getStatus(){ return StatusData::getById($this->status_id); }
 	public function getPayment(){ return PaymentData::getById($this->payment_id); }
 
+
+	function sumasdiasemana($fecha,$dias)
+	{
+		$datestart= strtotime($fecha);
+		$datesuma = 15 * 86400;
+		$diasemana = date('N',$datestart);
+		$totaldias = $diasemana+$dias;
+		$findesemana = intval( $totaldias/5) *2 ; 
+		$diasabado = $totaldias % 5 ; 
+		if ($diasabado==6) $findesemana++;
+		if ($diasabado==0) $findesemana=$findesemana-2;
+	 
+		$total = (($dias+$findesemana) * 86400)+$datestart ; 
+		return $fechafinal = date('Y-m-d', $total);
+	}
+	
+
+
 	public function add(){
-		// $sql = "insert into reservation (title,note,medic_id,date_at,time_at,pacient_id,user_id,price,status_id,payment_id,sick,symtoms,medicaments,created_at) ";
-		// $sql .= "value (\"$this->title\",\"$this->note\",\"$this->medic_id\",\"$this->date_at\",\"$this->time_at\",$this->pacient_id,$this->user_id,\"$this->price\",$this->status_id,$this->payment_id,\"$this->sick\",\"$this->symtoms\",\"$this->medicaments\",$this->created_at)";
-		$sql = "insert into reservation (user_id,date_at,description,typecase,typeevent,conafec,numrad,encontrol,orpeticion,funci_id1,funci_id2,chcomun,atrcalidad,pacient_id,pacientp_id,status_id,created_at) ";
-		$sql .= "value ($this->user_id,\"$this->date_at\",\"$this->description\",\"$this->typecase\",\"$this->typeevent\",\"$this->conafec\",\"$this->numrad\",\"$this->encontrol\",\"$this->orpeticion\",\"$this->funci_id1\",\"$this->funci_id2\",\"$this->chcomun\",\"$this->atrcalidad\",$this->pacient_id,$this->pacientp_id,\"$this->status_id\",$this->created_at)";
-		echo $sql;
+		
+		// $sumarDias=1;
+		// $entre1 = sumasdiasemana(date("Y-m-d"),$sumarDias);
+		// echo $entre1 ;
+		$fecha = date("Y-m-d");
+		$dias=15;
+		$datestart= strtotime($fecha);
+		$datesuma = 15 * 86400;
+		$diasemana = date('N',$datestart);
+		$totaldias = $diasemana+$dias;
+		$findesemana = intval( $totaldias/5) *2 ; 
+		$diasabado = $totaldias % 5 ; 
+		if ($diasabado==6) $findesemana++;
+		if ($diasabado==0) $findesemana=$findesemana-2;
+	 
+		$fechatotal = (($dias+$findesemana) * 86400)+$datestart ; 
+		$fechatotal = date('Y-m-d', $fechatotal);
+		//echo $fechatotal;
+		
+		$sql = "insert into reservation (user_id,date_at,description,diagnostico,typecase,typeevent,conafec,numrad,encontrol,orpeticion,funci_id1,funci_id2,chcomun,atrcalidad,pacient_id,pacientp_id,status_id,created_at,end_at) ";
+		$sql .= "value ($this->user_id,\"$this->date_at\",\"$this->description\",\"$this->diagnostico\",\"$this->typecase\",\"$this->typeevent\",\"$this->conafec\",\"$this->numrad\",\"$this->encontrol\",\"$this->orpeticion\",\"$this->funci_id1\",\"$this->funci_id2\",\"$this->chcomun\",\"$this->atrcalidad\",$this->pacient_id,$this->pacientp_id,\"$this->status_id\",$this->created_at, \"$fechatotal\")";
+		//echo $sql;
 		
 		return Executor::doit($sql);
 	}
@@ -50,7 +85,7 @@ class ReservationData {
 	public static function getEndId(){
 		//"“SELECT MAX(id) AS id FROM tabla”
 		$sql = "select MAX(id) As id FROM reservation";
-		echo $sql;
+		//echo $sql;
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new ReservationData());
 	}

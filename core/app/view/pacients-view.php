@@ -158,8 +158,10 @@ if (isset($_SESSION['user_id'])) {
 						echo "<p class='alert alert-danger'>No hay pacientes</p>";
 					}
 				}
+				
 	?>
 
+	
 
 	</div>
 </div>

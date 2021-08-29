@@ -11,6 +11,7 @@ $r = new ReservationData();
 //$r->title = $_POST["title"];
 $r->date_at = $_POST["date_at"];
 $r->description = $_POST["description"];
+$r->diagnostico = $_POST["diagnostico"];
 $r->typecase = $_POST["typecase"];
 $r->typeevent = $_POST["typeevent"];
 $r->conafec = $_POST["conafec"]; 
@@ -27,7 +28,7 @@ $r->atrcalidad = $_POST["atrcalidad"];
 $r->pacient_id = $_POST["pacient_id"];
 $r->pacientp_id = $_POST["pacientp_id"];
 $r->user_id = $_SESSION["user_id"];
-$r->status_id =0;
+$r->status_id =1;
 
 $r->add();
 

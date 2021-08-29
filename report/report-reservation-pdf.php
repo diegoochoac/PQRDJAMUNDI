@@ -44,6 +44,7 @@ class PDF extends FPDF
         // T�tulo
         $this->Cell(120, 10, utf8_decode('Reporte de Atención DefenSalud Jamundí'), 1, 0, 'C');
         // Salto de l�nea
+
         $this->Ln(50);
     }
 
@@ -51,11 +52,15 @@ class PDF extends FPDF
     function Footer()
     {
         // Posici�n: a 1,5 cm del final
-        $this->SetY(-15);
+        $this->SetY(-25);
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
         // N�mero de p�gina
+        $fechaActual = date('d-m-Y');
+
         $this->Cell(0, 10, utf8_decode('Alcaldia de Jamundí - Pagina ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->Ln(5);
+        $this->Cell(0, 10, "Secretaria de Salud - Fecha: ".$fechaActual, 0, 0, 'C');
     }
 
     function contentPdf()
@@ -66,6 +71,8 @@ class PDF extends FPDF
 
     function TablaSimple($header, $users)
     {
+        $fechaActual = date('d-m-Y');
+
         $this->SetFont('Times', '', 12);
         $this->Cell(40, 5, utf8_decode('Número del Caso: '), 0);
         $this->Cell(40, 5, $users->id, 0);
@@ -160,8 +167,14 @@ class PDF extends FPDF
         $this->Cell(0, 10, 'DATOS DE LA SOLICITUD ', 0);
         $this->Ln(12);
 
+        $this->Cell(40, 5, utf8_decode("Fecha de la petición:"), 0);
+        $this->Cell(60, 5, $users->created_at, 0);
+        $this->Cell(40, 5, "", 0);
+        $this->Cell(60, 5, "", 0);
+        $this->Ln(7);
+
         $this->Cell(40, 5, utf8_decode("Origen de la Petición:"), 0);
-        $this->Cell(60, 5, "EPS Pepito", 0);
+        $this->Cell(60, 5, $users->orpeticion, 0);
         $this->Cell(40, 5, "Tipo de Caso: ", 0);
         $this->Cell(60, 5, $users->typecase, 0);
         $this->Ln(7);
@@ -172,20 +185,20 @@ class PDF extends FPDF
 
         $this->Cell(40, 5, utf8_decode("Número de Radicado:"), 0);
         $this->Cell(60, 5, $users->numrad, 0);
+        $this->Cell(40, 5, "Dias Habiles: ", 0);
+        $this->Cell(60, 5, date('d', abs(strtotime($users->end_at) - strtotime($fechaActual))), 0);
+        $this->Ln(7);
+
+        $this->Cell(40, 5, "Diagnostico:", 0);
+        $this->Cell(60, 5, "$users->diagnostico", 0);
         $this->Cell(40, 5, "El afectado esta: ", 0);
         $this->Cell(60, 5, $users->conafec, 0);
         $this->Ln(7);
 
-        $this->Cell(40, 5, "Numero de Radicado:", 0);
-        $this->Cell(60, 5, "xxxxxxxxx", 0);
-        $this->Cell(40, 5, "El afectado esta: ", 0);
-        $this->Cell(60, 5, "Ambulatrio", 0);
-        $this->Ln(7);
-
         $this->Cell(40, 5, utf8_decode("Funcionario creación:"), 0);
-        $this->Cell(60, 5, "xxxxxxxxx", 0);
+        $this->Cell(60, 5, MedicData::getById($users->funci_id1)->name, 0);
         $this->Cell(40, 5, "Funcionario Asignado : ", 0);
-        $this->Cell(60, 5, "xxxxxxxxx", 0);
+        $this->Cell(60, 5, MedicData::getById($users->funci_id2)->name, 0);
         $this->Ln(7);
 
         //$this->Line(20, 220, 210 - 20, 220);
@@ -199,17 +212,17 @@ class PDF extends FPDF
             $this->Cell(30, 5, $col, 1);
         $this->Ln();
         //Aca se debe hacer un for
-        $this->Cell(30, 5, "Campo 1", 1);
-        $this->Cell(30, 5, "Campo 2", 1);
-        $this->Cell(30, 5, "Campo 3", 1);
-        $this->Cell(30, 5, "Campo 4", 1);
-        $this->Cell(30, 5, "Campo 5", 1);
-        $this->Cell(30, 5, "Campo 6", 1);
-        // $this->Ln();
-        // $this->Cell(40, 5, "linea 1", 1);
-        // $this->Cell(40, 5, "linea 2", 1);
-        // $this->Cell(40, 5, "linea 3", 1);
-        // $this->Cell(40, 5, "linea 4", 1);
+        $usersres = HistoryReservationData::getByIdReservation($users->id);
+
+        foreach($usersres as $user){
+            $this->Cell(30, 5, $user->tiposeguimiento, 1);
+            $this->Cell(30, 5, $user->descripcion, 1);
+            $this->Cell(30, 5, "", 1);
+            $this->Cell(30, 5, $user->estado, 1);
+            $this->Cell(30, 5, "", 1);
+            $this->Cell(30, 5, $user->created_at, 1);
+            $this->Ln();
+        }
     }
 }
 
