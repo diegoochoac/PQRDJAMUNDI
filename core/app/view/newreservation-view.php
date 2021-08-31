@@ -56,6 +56,11 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-lg-3">
               <button class="btn btn-primary btn-block">Buscar Peticionario</button>
             </div>
+
+            <div class="col-lg-3">
+              <a href="index.php?view=newreservation" class="btn btn-default btn-block">Limpiar Busqueda</a>
+              <!-- <button class="btn btn-primary btn-block">Limpiar Busqueda</button> -->
+            </div>
             <br><br><br>
             <hr>
 
@@ -190,6 +195,10 @@ if (isset($_SESSION['user_id'])) {
             <br>
             <div class="col-lg-3">
               <button class="btn btn-primary btn-block">Buscar Afectado</button>
+            </div>
+            <div class="col-lg-3">
+              <a href="index.php?view=newreservation" class="btn btn-default btn-block">Limpiar Busqueda</a>
+              <!-- <button class="btn btn-primary btn-block">Limpiar Busqueda</button> -->
             </div>
             <br><br><br>
             <hr>
@@ -469,7 +478,7 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                         <label for="inputEmail1" class="col-lg-2 control-label">Otro</label>
                         <div class="col-md-3">
-                          <input type="text" name="extranjeroa" id="extranjeroa" class="form-control" placeholder="Rellene aqui si seleciono Otro"/>
+                          <input type="text" name="extranjeroa" id="extranjeroa" class="form-control" placeholder="Rellene aqui si seleciono Otro" />
                         </div>
                       </div>
                       <div class="col-4">

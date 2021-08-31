@@ -85,11 +85,12 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-4">
               <label for="inputEmail1" class="col-lg-2 control-label">Usted se Autoreconoce como*</label>
               <div class="col-lg-3">
-                <select name="gender2" class="form-control" required>
+                <select name="gender2" class="form-control" >
                   <option value="">-- SELECCIONE --</option>
-                  <option value="Hetero ">Heterosexual</option>
-                  <option value="Homo">Homosexual</option>
-                  <option value="Bi">Bisexual</option>
+                  <option value="No Aplica">No Aplica</option>
+                  <option value="Heterosexual ">Heterosexual</option>
+                  <option value="Homosexual">Homosexual</option>
+                  <option value="Bisexual">Bisexual</option>
                 </select>
               </div>
             </div>
