@@ -26,7 +26,8 @@ $r->chcomun = $_POST["chcomun"];
 $r->atrcalidad = $_POST["atrcalidad"];  
 
 $r->pacient_id = $_POST["pacient_id"];
-$r->pacientp_id = $_POST["pacientp_id"];
+//$r->pacientp_id = $_POST["pacientp_id"];
+$r->pacientp_id = $_POST["pacient_id"];
 $r->user_id = $_SESSION["user_id"];
 $r->status_id =1;
 

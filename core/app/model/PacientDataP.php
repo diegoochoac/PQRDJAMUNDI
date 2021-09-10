@@ -15,7 +15,8 @@ class PacientDataP
 	public function add()
 	{
 		$sql = "insert into " . self::$tablename . " (name,lastname,typedoc,numdoc,phone1,phone2,email,created_at) ";
-		$sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->numdoc\",\"$this->phone1\",\"$this->phone2\",\"$this->email\",$this->created_at)";
+		$sql .= "value (\"$this->name\",\"$this->lastname\",\"$this->typedoc\",\"$this->numdoc\",\"$this->phone\",\"$this->phonecel\",\"$this->email\",$this->created_at)";
+		echo($sql);
 		try {
 			Executor::doit($sql);
 		} catch (Exception $e) {

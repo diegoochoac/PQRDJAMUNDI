@@ -182,6 +182,9 @@ class PDF extends FPDF
         $this->Cell(40, 5, utf8_decode("Descripción: "), 0);
         $this->Cell(60, 5, $users->description, 0);
         $this->Ln(7);
+        $this->Cell(40, 5, utf8_decode("Diagnostico: "), 0);
+        $this->Cell(60, 5, $users->diagnostico, 0);
+        $this->Ln(7);
 
         $this->Cell(40, 5, utf8_decode("Número de Radicado:"), 0);
         $this->Cell(60, 5, $users->numrad, 0);

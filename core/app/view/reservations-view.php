@@ -123,6 +123,7 @@ if (isset($_SESSION['user_id'])) {
 							<th>EPS</th>
 							<th>Condición del Afectado</th>
 							<th>Funcionario Atención</th>
+							<th>Funcionario Asignado</th>
 							<th>Número de PQRD SISNET</th>
 							<th>Fecha Creación</th>
 							<th>Fecha Vencimineto</th>
@@ -144,6 +145,7 @@ if (isset($_SESSION['user_id'])) {
 								<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
 								<td><?php echo $user->conafec ?></td>
 								<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+								<td><?php echo MedicData::getById($user->funci_id2)->name; ?></td>
 								<td><?php echo $user->numrad; ?></td>
 								<td><?php echo $user->date_at; ?></td>
 								<td><?php echo $user->end_at; ?></td>
@@ -201,6 +203,7 @@ if (isset($_SESSION['user_id'])) {
 					<th>EPS</th>
 					<th>Condición del Afectado</th>
 					<th>Funcionario Atención</th>
+					<th>Funcionario Asignado</th>
 					<th>Número de PQRD SISNET</th>
 					<th>Fecha Creación</th>
 					<th>Fecha Vencimineto</th>
@@ -220,6 +223,7 @@ if (isset($_SESSION['user_id'])) {
 						<td><?php echo PacientData::getById($user->pacient_id)->eps; ?></td>
 						<td><?php echo $user->conafec ?></td>
 						<td><?php echo MedicData::getById($user->funci_id1)->name; ?></td>
+						<td><?php echo MedicData::getById($user->funci_id2)->name; ?></td>
 						<td><?php echo $user->numrad; ?></td>
 						<td><?php echo $user->date_at; ?></td>
 						<td><?php echo $user->end_at; ?></td>

@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
                         <div class="col-4">
                             <label for="inputEmail1" class="col-lg-2 control-label">Nombres*</label>
                             <div class="col-lg-3">
-                                <input type="text" name="namepeticionario" required class="form-control" id="namepeticionario" placeholder="Nombres del Contacto">
+                                <input type="text" name="name" required class="form-control" id="name" placeholder="Nombres del Contacto">
                             </div>
                         </div>
                         <div class="col-4">
@@ -60,13 +60,13 @@ if (isset($_SESSION['user_id'])) {
                         <div class="col-4">
                             <label for="inputEmail1" class="col-lg-2 control-label">No Telefono Fijo*</label>
                             <div class="col-md-3">
-                                <input type="text" name="phone1" required class="form-control" id="phone1peticionario" placeholder="Telefono Fijo">
+                                <input type="text" name="phone" required class="form-control" id="phone" placeholder="Telefono Fijo">
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="inputEmail1" class="col-lg-2 control-label">No Telefono Celular*</label>
                             <div class="col-md-3">
-                                <input type="text" name="phone2" required class="form-control" id="phone2peticionario" placeholder="Telefono celular">
+                                <input type="text" name="phonecel" required class="form-control" id="phonecel" placeholder="Telefono celular">
                             </div>
                         </div>
                     </div>

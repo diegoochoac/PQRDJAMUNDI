@@ -9,7 +9,7 @@
 if (count($_POST) > 0) {
 	$user = new PacientDataP();
 
-	$user->id_pacientp = $_POST["id_pacientp"];
+	//$user->id_pacientp = $_POST["id_pacientp"];
 	$user->name = $_POST["name"];
 	$user->lastname = $_POST["lastname"];
 	$user->typedoc = $_POST["typedoc"];

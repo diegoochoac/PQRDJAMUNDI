@@ -72,7 +72,8 @@ class ReservationData {
 
 // partiendo de que ya tenemos creado un objecto ReservationData previamente utilizamos el contexto
 	public function update(){
-		$sql = "update ".self::$tablename." set title=\"$this->title\",pacient_id=\"$this->pacient_id\",medic_id=\"$this->medic_id\",date_at=\"$this->date_at\",time_at=\"$this->time_at\",note=\"$this->note\",SISNET=\"$this->SISNET\",symtoms=\"$this->symtoms\",medicaments=\"$this->medicaments\",status_id=\"$this->status_id\",payment_id=\"$this->payment_id\",price=\"$this->price\" where id=$this->id";
+		$sql = "update ".self::$tablename." set date_at=\"$this->date_at\",description=\"$this->description\",diagnostico=\"$this->diagnostico\",typecase=\"$this->typecase\",typeevent=\"$this->typeevent\",conafec=\"$this->conafec\",numrad=\"$this->numrad\",encontrol=\"$this->encontrol\",orpeticion=\"$this->orpeticion\",chcomun=\"$this->chcomun\",atrcalidad=\"$this->atrcalidad\"";
+		print($sql);
 		Executor::doit($sql);
 	}
 
