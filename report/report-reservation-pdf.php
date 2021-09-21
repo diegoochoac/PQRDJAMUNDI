@@ -60,7 +60,7 @@ class PDF extends FPDF
 
         $this->Cell(0, 10, utf8_decode('Alcaldia de Jamundí - Pagina ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
         $this->Ln(5);
-        $this->Cell(0, 10, "Secretaria de Salud - Fecha: ".$fechaActual, 0, 0, 'C');
+        $this->Cell(0, 10, utf8_decode("Secretaría de Salud - Fecha: ".$fechaActual), 0, 0, 'C');
     }
 
     function contentPdf()
@@ -79,31 +79,31 @@ class PDF extends FPDF
         $this->Ln(10);
         // $this->Line(20, 45, 210 - 20, 45); // 20mm from each Edge
 
-        $this->Cell(0, 10, 'DATOS DEL PETICIONARIO ', 0);
-        $this->Ln(12);
+        // $this->Cell(0, 10, 'DATOS DEL PETICIONARIO ', 0);
+        // $this->Ln(12);
 
-        $this->Cell(40, 5, "Tipo de Documento: ", 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->typedoc, 0);
-        $this->Cell(45, 5, utf8_decode("Número de Documento : "), 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->numdoc, 0);
-        $this->Ln(7);
+        // $this->Cell(40, 5, utf8_decode("Tipo de Documento: "), 0);
+        // $this->Cell(60, 5, utf8_decode(PacientDataP::getById($users->pacientp_id)->typedoc), 0);
+        // $this->Cell(45, 5, utf8_decode("Número de Documento : "), 0);
+        // $this->Cell(60, 5, utf8_decode(PacientDataP::getById($users->pacientp_id)->numdoc), 0);
+        // $this->Ln(7);
 
-        $this->Cell(40, 5, "Nombres Afectado: ", 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->name, 0);
-        $this->Cell(40, 5, "Apellidos Afectado: ", 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->lastname, 0);
-        $this->Ln(7);
-        $this->Cell(50, 5, utf8_decode("Número de Telefono Fijo:"), 0);
-        $this->Cell(50, 5, PacientDataP::getById($users->pacientp_id)->phone1, 0);
-        $this->Cell(55, 5, utf8_decode("Número de Telefono Celular: "), 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->phone2, 0);
-        $this->Ln(7);
+        // $this->Cell(40, 5, "Nombres Afectado: ", 0);
+        // $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->name, 0);
+        // $this->Cell(40, 5, "Apellidos Afectado: ", 0);
+        // $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->lastname, 0);
+        // $this->Ln(7);
+        // $this->Cell(50, 5, utf8_decode("Número de Telefono Fijo:"), 0);
+        // $this->Cell(50, 5, PacientDataP::getById($users->pacientp_id)->phone1, 0);
+        // $this->Cell(55, 5, utf8_decode("Número de Telefono Celular: "), 0);
+        // $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->phone2, 0);
+        // $this->Ln(7);
 
-        $this->Cell(40, 5, "Correo Electronico: ", 0);
-        $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->email, 0);
-        $this->Ln(12);
+        // $this->Cell(40, 5, "Correo Electronico: ", 0);
+        // $this->Cell(60, 5, PacientDataP::getById($users->pacientp_id)->email, 0);
+        // $this->Ln(12);
 
-        $this->Line(20, 115, 210 - 20, 115);
+        // $this->Line(20, 115, 210 - 20, 115);
 
         $this->Cell(0, 10, 'DATOS DEL AFECTADO ', 0);
         $this->Ln(12);
@@ -115,9 +115,9 @@ class PDF extends FPDF
         $this->Ln(7);
 
         $this->Cell(40, 5, "Nombres Afectado: ", 0);
-        $this->Cell(60, 5, PacientData::getById($users->pacient_id)->name, 0);
+        $this->Cell(60, 5, utf8_decode(PacientData::getById($users->pacient_id)->name), 0);
         $this->Cell(40, 5, "Apellidos Afectado: ", 0);
-        $this->Cell(60, 5, PacientData::getById($users->pacient_id)->lastname, 0);
+        $this->Cell(60, 5, utf8_decode(PacientData::getById($users->pacient_id)->lastname), 0);
         $this->Ln(7);
 
         $this->Cell(40, 5, "Genero: ", 0);
@@ -161,7 +161,7 @@ class PDF extends FPDF
         $this->Cell(60, 5, PacientData::getById($users->pacient_id)->typereg, 0);
         $this->Ln(7);
 
-        $this->Line(20, 200, 210 - 20, 200);
+        $this->Line(20, 160, 210 - 20, 160);
 
         $this->Ln(10);
         $this->Cell(0, 10, 'DATOS DE LA SOLICITUD ', 0);
@@ -174,34 +174,34 @@ class PDF extends FPDF
         $this->Ln(7);
 
         $this->Cell(40, 5, utf8_decode("Origen de la Petición:"), 0);
-        $this->Cell(60, 5, $users->orpeticion, 0);
+        $this->Cell(60, 5, utf8_decode($users->orpeticion), 0);
         $this->Cell(40, 5, "Tipo de Caso: ", 0);
-        $this->Cell(60, 5, $users->typecase, 0);
+        $this->Cell(60, 5, utf8_decode($users->typecase), 0);
         $this->Ln(7);
 
         $this->Cell(40, 5, utf8_decode("Descripción: "), 0);
-        $this->Cell(60, 5, $users->description, 0);
+        $this->MultiCell(140, 5, utf8_decode($users->description), 0);
         $this->Ln(7);
         $this->Cell(40, 5, utf8_decode("Diagnostico: "), 0);
-        $this->Cell(60, 5, $users->diagnostico, 0);
+        $this->MultiCell(140, 5, utf8_decode($users->diagnostico), 0);
         $this->Ln(7);
 
         $this->Cell(40, 5, utf8_decode("Número de Radicado:"), 0);
-        $this->Cell(60, 5, $users->numrad, 0);
-        $this->Cell(40, 5, "Dias Habiles: ", 0);
+        $this->Cell(60, 5, utf8_decode($users->numrad), 0);
+        $this->Cell(40, 5, utf8_decode("Dias Habiles: "), 0);
         $this->Cell(60, 5, date('d', abs(strtotime($users->end_at) - strtotime($fechaActual))), 0);
         $this->Ln(7);
 
-        $this->Cell(40, 5, "Diagnostico:", 0);
-        $this->Cell(60, 5, "$users->diagnostico", 0);
-        $this->Cell(40, 5, "El afectado esta: ", 0);
-        $this->Cell(60, 5, $users->conafec, 0);
+        // $this->Cell(40, 5, utf8_decode("Diagnostico:"), 0);
+        // $this->Cell(60, 5, utf8_decode("$users->diagnostico"), 0);
+        $this->Cell(40, 5, utf8_decode("El afectado esta: "), 0);
+        $this->Cell(60, 5, utf8_decode($users->conafec), 0);
         $this->Ln(7);
 
         $this->Cell(40, 5, utf8_decode("Funcionario creación:"), 0);
-        $this->Cell(60, 5, MedicData::getById($users->funci_id1)->name, 0);
+        $this->Cell(60, 5, utf8_decode(MedicData::getById($users->funci_id1)->name), 0);
         $this->Cell(40, 5, "Funcionario Asignado : ", 0);
-        $this->Cell(60, 5, MedicData::getById($users->funci_id2)->name, 0);
+        $this->Cell(60, 5, utf8_decode(MedicData::getById($users->funci_id2)->name), 0);
         $this->Ln(7);
 
         //$this->Line(20, 220, 210 - 20, 220);
